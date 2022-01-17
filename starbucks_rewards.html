@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
+      integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni"
+      crossorigin="anonymous"
+    />
+
+    <link
+      href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+      }
+
+      h1 {
+        cursor: none;
+        background-blend-mode: color;
+      }
+
+      .custom-cursor {
+        cursor: none;
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #fff;
+        border-radius: 50%;
+        animation: resize 2s ease-in infinite;
+        mix-blend-mode: difference;
+        transition: all 0s ease-in;
+        z-index: 10;
+        opacity: 0;
+      }
+
+      .custom-cursor.opaque {
+        opacity: 1;
+      }
+
+      @keyframes resize {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(0.8);
+        }
+      }
+
+      .underline a {
+        position: relative;
+      }
+
+      .underline a:after {
+        content: "";
+        position: absolute;
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        display: block;
+        width: 0;
+        height: 2.5px;
+        left: 50%;
+        background-color: #1e3932;
+        transition: width 0.3s ease 0s, left 0.3s ease;
+      }
+
+      h2 {
+        position: relative;
+        cursor: pointer;
+      }
+
+      h2:after {
+        content: "";
+        position: absolute;
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        display: block;
+        width: 0;
+        height: 2.5px;
+        left: 50%;
+        background-color: #1e3932;
+        transition: width 0.3s ease 0s, left 0.3s ease;
+      }
+
+      h2:hover:after {
+        width: 100%;
+        left: 0;
+      }
+
+      .underline a:hover:after {
+        width: 100%;
+        left: 0;
+      }
+
+      .header .join-now {
+        box-shadow: inset 0 0 0 #fff;
+        transition: ease-out 0.5s;
+        border: 2px solid #198754;
+      }
+
+      .header .join-now:hover {
+        box-shadow: inset 105px 0 0 0 #fff;
+        color: #198754;
+      }
+
+      .sign-in,
+      .join-now {
+        border-radius: 50px;
+        height: 40px;
+      }
+
+      .sign-in {
+        border: 2px solid #000;
+      }
+
+      .header {
+        background-image: url("images/background-xl.png");
+        height: 80vh;
+      }
+
+      .header p {
+        font-size: 1.25rem;
+      }
+
+      .header p span {
+        text-decoration: underline;
+      }
+
+      .getting-started-block,
+      .extras-block {
+        height: 80vh;
+      }
+
+      .getting-started-block h2,
+      .extras-block h2 {
+        font-size: 1.85rem;
+      }
+
+      .getting-started-block h3,
+      .extras-block h3 {
+        font-size: 1.375rem;
+      }
+
+      .getting-started-para {
+        width: 90%;
+      }
+
+      .extras-block img {
+        width: 28%;
+      }
+
+      .extras-block a {
+        text-decoration: underline;
+        color: #00653e;
+      }
+
+      .extras-block a:hover {
+        text-decoration: none;
+      }
+
+      .extra-heading-para {
+        width: 68%;
+      }
+
+      .number-icon {
+        font-size: 1.5rem;
+        border: 2px solid #008248;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .number-icon:hover {
+        background: #008248;
+        color: #fff;
+      }
+
+      .favorites-block {
+        background-color: #f1f8f6;
+      }
+
+      .lower-footer {
+        background-color: #1e3932;
+        color: #fff;
+      }
+
+      .tablinks {
+        font-size: 1.625rem;
+        outline: none;
+      }
+
+      .star-icon {
+        color: #cba258;
+        font-size: 1.25rem;
+      }
+
+      .favorite-items {
+        height: 35vh;
+        background-color: #d4e9e2;
+      }
+
+      footer {
+        background-color: #f9f9f9;
+      }
+
+      footer h5 {
+        color: #00653e;
+      }
+
+      .item {
+        position: absolute;
+        display: none;
+      }
+
+      .item img {
+        width: 35%;
+        filter: drop-shadow(2px 4px 5px #000);
+      }
+
+      .item .content {
+        width: 40%;
+      }
+
+      .item .img-width {
+        width: 18%;
+      }
+
+      .item .img-width-1 {
+        width: 15%;
+      }
+
+      .tabcontent {
+        animation: fadeEffect 1s;
+      }
+
+      .tabs-slider {
+        width: 100px;
+        height: 4px;
+        background: #008248;
+        position: absolute;
+        margin-left: -1em;
+        margin-top: 0.25em;
+        transition: all 0.5s ease;
+      }
+
+      .favorites-block .tablinks:nth-child(1).clicked ~ .tabs-slider {
+        left: 33%;
+      }
+
+      .favorites-block .tablinks:nth-child(2).clicked ~ .tabs-slider {
+        left: 40%;
+      }
+
+      .favorites-block .tablinks:nth-child(3).clicked ~ .tabs-slider {
+        left: 46.5%;
+      }
+
+      .favorites-block .tablinks:nth-child(4).clicked ~ .tabs-slider {
+        left: 53.5%;
+      }
+
+      .favorites-block .tablinks:nth-child(5).clicked ~ .tabs-slider {
+        left: 61%;
+      }
+
+      @keyframes fadeEffect {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /*  accordion */
+
+      .accordion {
+        width: 80%;
+        margin-top: 30px;
+        border: 0.5px solid #283042;
+        border-radius: 5px;
+        padding: 5px 0 5px 15px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        scroll-margin-top: 300px;
+      }
+
+      .accordion-link {
+        text-decoration: none;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 0;
+        color: #000;
+      }
+
+      .accordion-link:hover {
+        color: #00653e;
+      }
+
+      .accordion-link i {
+        color: #fff;
+        font-size: 20px;
+        background-color: #00653e;
+        padding: 5px 12px;
+        border-radius: 10px 0 0 10px;
+      }
+
+      .accordion-link .ion-md-remove {
+        display: none;
+      }
+
+      .answer {
+        max-height: 0;
+        overflow: hidden;
+        position: relative;
+        transition: all 500ms ease-in-out;
+      }
+
+      .answer::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 100%;
+        background: #198754;
+      }
+
+      .answer p {
+        padding: 5px 10px;
+      }
+
+      .accordion:target .answer {
+        max-height: 200px;
+      }
+
+      .accordion:target .ion-md-remove {
+        display: block;
+      }
+
+      .accordion:target .ion-md-add {
+        display: none;
+      }
+
+      /* media queries */
+
+      @media (min-width: 425px) and (max-width: 768px) {
+        .getting-started-block h3 {
+          font-size: 16px;
+        }
+
+        h4 {
+          font-size: 18px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+
+        .item {
+          width: 80% !important;
+        }
+
+        .lower-footer p {
+          font-size: 10px;
+        }
+
+        .header {
+          background-image: url(images/background-xl.png);
+          height: 80vh;
+          background-size: 100% 100%;
+          background-position: 100% 100%;
+        }
+
+        .getting-started-block,
+        .extras-block {
+          height: 70vh;
+        }
+
+        .tabs-slider {
+          display: none;
+        }
+
+        .item img {
+          width: 35%;
+          height: 150px;
+          filter: drop-shadow(2px 4px 5px #000);
+        }
+
+        .nav-item {
+          margin: 15px 0 !important;
+          padding: 0 !important;
+          display: flex;
+          justify-content: center;
+        }
+
+        .nav-link {
+          text-align: center;
+        }
+
+        .nav-link.sign-in,
+        .nav-link.join-now {
+          width: 40%;
+        }
+      }
+
+      @media (max-width: 424px) {
+        .getting-started-block h3 {
+          font-size: 16px;
+        }
+
+        .getting-started-block h2 {
+          font-size: 26px;
+        }
+
+        h2 {
+          font-size: 26px;
+        }
+
+        h4 {
+          font-size: 18px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+
+        .tablinks {
+          font-size: 1.25rem;
+        }
+
+        .item {
+          width: 100% !important;
+          align-items: center;
+        }
+
+        .lower-footer p {
+          font-size: 10px;
+          text-align: center;
+        }
+
+        .lower-footer .container {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .lower-footer .container div {
+          width: 100% !important;
+        }
+
+        .header {
+          background-image: url(images/background-xl.png);
+          height: 60vh;
+          background-size: 100% 100%;
+          background-position: 100% 100%;
+        }
+
+        .getting-started-block {
+          height: 110vh;
+        }
+
+        .extras-block {
+          height: 170vh;
+        }
+
+        .tabs-slider {
+          display: none;
+        }
+
+        .item img {
+          width: 35%;
+          height: 150px;
+          filter: drop-shadow(2px 4px 5px #000);
+        }
+
+        .nav-item {
+          margin: 10px 0 !important;
+          padding: 0 !important;
+        }
+
+        .nav-link {
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 376px) {
+        .getting-started-block h3 {
+          font-size: 14px;
+        }
+
+        .getting-started-block h2 {
+          font-size: 22px;
+        }
+
+        h2 {
+          font-size: 22px;
+        }
+
+        h4 {
+          font-size: 14px;
+        }
+
+        .nav-item {
+          margin: 10px 0 !important;
+          padding: 0 !important;
+        }
+
+        .nav-link {
+          text-align: center;
+        }
+
+        p {
+          font-size: 12px;
+        }
+
+        .header p {
+          font-size: 15px;
+        }
+
+        .accordion {
+          font-size: 0.75rem;
+          padding: 3px 0 3px 15px;
+        }
+
+        .tablinks {
+          font-size: 1rem;
+          display: inline;
+          padding: 0 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light fixed-top p-md-2 p-lg-4 bg-light"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-x-diamond"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M7.987 16a1.526 1.526 0 0 1-1.07-.448L.45 9.082a1.531 1.531 0 0 1 0-2.165L6.917.45a1.531 1.531 0 0 1 2.166 0l6.469 6.468A1.526 1.526 0 0 1 16 8.013a1.526 1.526 0 0 1-.448 1.07l-6.47 6.469A1.526 1.526 0 0 1 7.988 16zM7.639 1.17 4.766 4.044 8 7.278l3.234-3.234L8.361 1.17a.51.51 0 0 0-.722 0zM8.722 8l3.234 3.234 2.873-2.873c.2-.2.2-.523 0-.722l-2.873-2.873L8.722 8zM8 8.722l-3.234 3.234 2.873 2.873c.2.2.523.2.722 0l2.873-2.873L8 8.722zM7.278 8 4.044 4.766 1.17 7.639a.511.511 0 0 0 0 .722l2.874 2.873L7.278 8z"
+            />
+          </svg>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbar"
+          aria-controls="navbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="navbar-nav">
+            <li class="nav-item underline">
+              <a class="nav-link fw-bold" href="#" aria-current="true">MENU</a>
+            </li>
+
+            <li class="nav-item underline">
+              <a class="nav-link fw-bold" href="#rewards">REWARDS</a>
+            </li>
+
+            <li class="nav-item underline">
+              <a class="nav-link fw-bold" href="#gift-cards">GIFT CARDS</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#" aria-current="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-house-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"
+                  />
+                </svg>
+                <span class="p-2 fw-bold">Find a store</span></a
+              >
+            </li>
+
+            <li class="nav-item px-2 mx-2">
+              <a class="nav-link px-3 fw-bold sign-in" href="#">Sign in</a>
+            </li>
+
+            <li class="nav-item px-2 mx-2">
+              <a
+                class="nav-link px-3 fw-bold text-light bg-dark join-now"
+                href="#"
+                >Join now</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="container-fluid py-4 py-lg-5 mt-5"
+      style="background-color: #1e3932"
+    ></div>
+
+    <div class="container-fluid header d-flex align-items-end">
+      <div class="mx-5 my-5">
+        <h1 class="my-4 mainHeading">
+          FREE COFFEE <br />
+          IS A TAP AWAY
+        </h1>
+        <div class="custom-cursor"></div>
+        <p class="my-4">Join now to start earning Rewards.</p>
+        <button class="btn btn-success fw-bold join-now px-3">Join now</button>
+        <p class="my-3">
+          Or <span>join in the app</span> for the best experience
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="container getting-started-block d-flex flex-column justify-content-center align-items-center"
+    >
+      <div class="row">
+        <div
+          class="col d-flex flex-column justify-content-between align-items-center"
+        >
+          <h2>Getting started is easy</h2>
+          <p class="mt-2">Earn Stars and get rewarded in a few easy steps.</p>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div
+          class="col-md-4 d-flex flex-column justify-content-between align-items-center"
+        >
+          <p class="number-icon py-1 px-3 fw-bold">1</p>
+          <h3>Create an account</h3>
+          <p class="getting-started-para text-md-center mt-2">
+            To get started, join now. You can also join in the app to get access
+            to the full range of Starbucks® Rewards benefits.
+          </p>
+        </div>
+
+        <div
+          class="col-md-4 d-flex flex-column justify-content-between align-items-center"
+        >
+          <p class="number-icon py-1 px-3 fw-bold">2</p>
+          <h3>Order and pay how you’d like</h3>
+          <p class="getting-started-para text-md-center mt-2">
+            Use cash, credit/debit card or save some time and pay right through
+            the app. You’ll collect Stars all ways. Learn how
+          </p>
+        </div>
+
+        <div
+          class="col-md-4 d-flex flex-column justify-content-between align-items-center"
+        >
+          <p class="number-icon py-1 px-3 fw-bold">3</p>
+          <h3>Earn Stars, get Rewards</h3>
+          <p class="getting-started-para text-md-center mt-2">
+            As you earn Stars, you can redeem them for Rewards—like free food,
+            drinks, and more. Start redeeming with as little as 25 Stars!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="container-fluid favorites-block pt-4 pt-lg-5 d-flex justify-content-end align-items-center flex-column"
+    >
+      <h2>Get your favorites for free</h2>
+      <div class="tab mt-md-3 mt-lg-5 mx-auto my-2">
+        <span
+          class="tablinks btn fw-bold mx-md-2"
+          onclick="openTab(event, 'tab1')"
+        >
+          25<span class="star-icon">★</span>
+        </span>
+
+        <span
+          class="tablinks btn fw-bold mx-md-2"
+          onclick="openTab(event, 'tab2')"
+        >
+          50<span class="star-icon">★</span>
+        </span>
+
+        <span
+          class="tablinks btn fw-bold mx-md-2"
+          onclick="openTab(event, 'tab3')"
+        >
+          150<span class="star-icon">★</span>
+        </span>
+
+        <span
+          class="tablinks btn fw-bold mx-md-2"
+          onclick="openTab(event, 'tab4')"
+        >
+          200<span class="star-icon">★</span>
+        </span>
+
+        <span
+          class="tablinks btn fw-bold mx-md-2"
+          onclick="openTab(event, 'tab5')"
+        >
+          400<span class="star-icon">★</span>
+        </span>
+        <div class="tabs-slider"></div>
+      </div>
+    </div>
+
+    <div
+      class="container-fluid favorite-items d-flex justify-content-center align-items-center"
+    >
+      <div class="item w-50 tabcontent justify-content-between" id="tab1">
+        <img src="images/coffee-1.png" class="ms-5" />
+        <div class="mt-5 me-5 content">
+          <h4>Customize your drink</h4>
+          <p>
+            Make your drink just right with an extra espresso shot, dairy
+            substitute or a dash of your favorite syrup.
+          </p>
+        </div>
+      </div>
+
+      <div class="item w-50 tabcontent justify-content-between" id="tab2">
+        <img src="images/coffee-2.png" class="ms-5" />
+        <div class="mt-5 me-5 content">
+          <h4>Brewed hot coffee, bakery item or hot tea</h4>
+          <p>
+            Pair coffee cake or an almond croissant with your fresh cup of hot
+            brew.
+          </p>
+        </div>
+      </div>
+
+      <div class="item w-50 tabcontent justify-content-around" id="tab3">
+        <img src="images/coffee-3.png" class="ms-5 img-width" />
+        <div class="mt-5 ms-5 content">
+          <h4>Handcrafted drink, hot breakfast or parfait</h4>
+          <p>
+            Have a really good morning with a breakfast sandwich, oatmeal or
+            your favorite drink.
+          </p>
+        </div>
+      </div>
+
+      <div class="item w-50 tabcontent justify-content-around" id="tab4">
+        <img src="images/coffee-4.png" class="ms-5 img-width" />
+        <div class="mt-5 ms-5 content">
+          <h4>Salad, sandwich or protein box</h4>
+          <p>
+            Nourish your day with a hearty Chipotle Chicken Wrap or Eggs &mp;
+            Cheese Protein Box.
+          </p>
+        </div>
+      </div>
+
+      <div class="item w-50 tabcontent justify-content-around" id="tab5">
+        <img src="images/coffee-5.png" class="ms-5 img-width-1" />
+        <div class="mt-5 ms-5 content">
+          <h4>Select merchandise or at-home coffee</h4>
+          <p>
+            Take home a signature cup, a bag of coffee or your choice of select
+            coffee accessories.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="container extras-block d-flex flex-column justify-content-center align-items-center"
+    >
+      <div class="row my-2">
+        <div class="col-md d-flex align-items-center flex-column">
+          <h2 class="my-3">Endless Extras</h2>
+          <p class="extra-heading-para text-center">
+            Joining Starbucks® Rewards means unlocking access to exclusive
+            benefits. Say hello to easy ordering, tasty Rewards and—yes, free
+            coffee.
+          </p>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div
+          class="col-md-4 d-flex flex-column justify-content-center align-items-center"
+        >
+          <img src="images/logo" class="my-2" />
+          <h3 class="mt-3">Fun freebies</h3>
+          <p class="text-center my-3">
+            Not only can you earn free coffee, look forward to a birthday treat
+            plus coffee and tea refills.
+          </p>
+          <a href="">Learn more</a>
+        </div>
+
+        <div
+          class="col-md-4 d-flex flex-column justify-content-center align-items-center"
+        >
+          <img src="images/logo2" class="my-2" />
+          <h3 class="mt-3">Order &amp; pay ahead</h3>
+          <p class="text-center my-3">
+            Enjoy the convenience of in-store, curbside or drive-thru pickup at
+            select stores.
+          </p>
+          <a href="">Learn more</a>
+        </div>
+
+        <div
+          class="col-md-4 d-flex flex-column justify-content-center align-items-center"
+        >
+          <img src="images/logo3" class="my-2" />
+          <h3 class="mt-3">Get to free faster</h3>
+          <p class="text-center my-3">
+            Earn Stars even quicker with Bonus Star challenges, Double Star Days
+            and exciting games.
+          </p>
+          <a href="">Learn more</a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="container d-flex flex-column justify-content-center align-items-center my-5"
+    >
+      <h2 class="">Frequently Asked Questions</h2>
+      <div
+        class="row d-flex flex-column justify-content-center align-items-center"
+      >
+        <div class="accordion" id="accordion1">
+          <a class="accordion-link" href="#accordion1">
+            How do I earn Stars?
+
+            <i class="icon ion-md-add"></i>
+            <i class="icon ion-md-remove"></i>
+          </a>
+          <div class="answer">
+            <p>
+              Stars can be earned by making purchases at Starbucks stores in
+              India using a registered physical Starbucks Card issued in India
+              or by using the Starbucks India mobile app. Every time you spend
+              Rs.300 (incl. taxes) at a Starbucks store in India, you will earn
+              one Star.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion" id="accordion2">
+          <a class="accordion-link" href="#accordion2">
+            Can I earn Stars every time I reload my Starbucks Card?
+
+            <i class="icon ion-md-add"></i>
+            <i class="icon ion-md-remove"></i>
+          </a>
+          <div class="answer">
+            <p>
+              No, you can earn Stars only when you make a purchase at any
+              Starbucks store in India using your registered physical Starbucks
+              Card or your Starbucks India mobile app and not when you reload
+              your Starbucks Card.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion" id="accordion3">
+          <a class="accordion-link" href="#accordion3">
+            Do my Stars expire?
+
+            <i class="icon ion-md-add"></i>
+            <i class="icon ion-md-remove"></i>
+          </a>
+          <div class="answer">
+            <p>
+              Yes. After registering, you have one year to accumulate Stars to
+              reach Green or Gold Level. If you earn less than the necessary
+              amount of Stars for each level, your Star count will be reset to
+              zero on your anniversary date. The star count will also reset to
+              zero once you attain or retain the Gold level.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion" id="accordion4">
+          <a class="accordion-link" href="#accordion4">
+            What are Bonus Stars?
+
+            <i class="icon ion-md-add"></i>
+            <i class="icon ion-md-remove"></i>
+          </a>
+          <div class="answer">
+            <p>
+              During the course of the program, members may get several
+              opportunities to earn additional Stars on promotional beverages
+              and other offers that may be run by Starbucks India.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion" id="accordion5">
+          <a class="accordion-link" href="#accordion5">
+            Can I redeem multiple rewards at one time?
+
+            <i class="icon ion-md-add"></i>
+            <i class="icon ion-md-remove"></i>
+          </a>
+          <div class="answer">
+            <p>
+              Yes, you can redeem multiple rewards that you have in your account
+              at a single time as long as they are within the expiry period.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion" id="accordion6">
+          <a class="accordion-link" href="#accordion6">
+            How do I redeem the offers?
+
+            <i class="icon ion-md-add"></i>
+            <i class="icon ion-md-remove"></i>
+          </a>
+          <div class="answer">
+            <p>
+              Just tell our store partner you’d like to redeem your reward and
+              present one of your registered Starbucks Cards or use your
+              Starbucks India mobile app to redeem your rewards.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container pt-5">
+        <div class="row">
+          <div class="col-6 col-md-3">
+            <h5>ABOUT US</h5>
+            <p>Our Heritage</p>
+            <p>Responsibility</p>
+            <p>Careers</p>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <h5>MENU</h5>
+            <p>Drinks</p>
+            <p>Food</p>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <h5>COFFEE</h5>
+            <p>Whole Bean Coffee</p>
+            <p>Starbucks VIA</p>
+            <p>How to Brew Great Coffee</p>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <h5>LEARN MORE</h5>
+            <p>Frequently Asked Questions</p>
+            <p>Card FAQs</p>
+            <p>Privacy Policy</p>
+            <p>Starbucks Card Terms of Use and Agreement</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lower-footer pt-3">
+        <div class="container d-flex justify-content-between">
+          <div class="d-flex w-50 justify-content-between">
+            <p>Web Accessibility</p>
+            <p>Privacy Policy</p>
+            <p>Terms of Use</p>
+            <p>Site Map</p>
+            <p>Cookie Preferences</p>
+          </div>
+
+          <p>Starbucks Coffee Company 2019. All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("tab1").style.display = "flex";
+
+      let previousLink, currentlink;
+      console.log("previous link is ", previousLink);
+
+      function openTab(evt, tab) {
+        var i, tabcontent;
+
+        currentLink = evt.target;
+        currentLink.classList.add("clicked");
+
+        if (previousLink) {
+          previousLink.classList.remove("clicked");
+        }
+
+        previousLink = currentLink;
+
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+
+        document.getElementById(tab).style.display = "flex";
+      }
+
+      document
+        .querySelector(".mainHeading")
+        .addEventListener("mousemove", (e) => {
+          let cursor = document.querySelector(".custom-cursor");
+          let mouseX = e.clientX - 90;
+          let mouseY = e.clientY - 520;
+
+          cursor.classList.add("opaque");
+          cursor.style.marginLeft = mouseX + "px";
+          cursor.style.marginTop = mouseY + "px";
+
+          console.log(cursor.style.marginTop);
+          console.log(cursor.style.marginLeft);
+        });
+    </script>
+
+    <script src="script.js"></script>
+    <!-- Bootstrap scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
